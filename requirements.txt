@@ -1,0 +1,14 @@
+alpaca-trade-api
+backtrader
+eventlet
+flask
+flask-socketio
+numpy
+pandas
+praw
+requests
+scikit-learn
+torch
+transformers
+tweepy
+yfinance
