@@ -1,0 +1,10 @@
+import { NextRequest, NextResponse } from 'next/server';
+import { checkCronSecret } from '../../_utils/auth';
+import { setCache } from '../../../lib/cache';
+
+export async function GET(req: NextRequest) {
+  if (!checkCronSecret(req)) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const today = new Date().toISOString().slice(0, 10);
+  await setCache(`iv:SPY:${today}`, { iv: 20 }, 86400 * 400);
+  return NextResponse.json({ ok: true });
+}
